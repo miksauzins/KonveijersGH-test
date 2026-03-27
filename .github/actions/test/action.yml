@@ -1,0 +1,29 @@
+name: 'Run Greetings API Tests'
+description: 'Runs API tests against the python-greetings service in a specified environment'
+
+inputs:
+  environment:
+    description: 'Target environment (dev, stg, preprod, prod)'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout pipeline repository
+      uses: actions/checkout@v4
+
+    - name: Checkout course-js-api-framework repository
+      uses: actions/checkout@v4
+      with:
+        repository: mtararujs/course-js-api-framework
+        path: course-js-api-framework
+
+    - name: Install npm dependencies
+      shell: bash
+      working-directory: course-js-api-framework
+      run: npm install
+
+    - name: Run tests against environment
+      shell: bash
+      working-directory: course-js-api-framework
+      run: npm run greetings greetings_${{ inputs.environment }}

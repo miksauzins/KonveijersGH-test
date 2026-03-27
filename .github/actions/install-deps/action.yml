@@ -1,0 +1,24 @@
+name: 'Install Python Dependencies'
+description: 'Clones python-greetings and installs all required pip dependencies into a virtual environment'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout pipeline repository
+      uses: actions/checkout@v4
+
+    - name: Checkout python-greetings repository
+      uses: actions/checkout@v4
+      with:
+        repository: mtararujs/python-greetings
+        path: python-greetings
+
+    - name: Create Python virtual environment
+      shell: bash
+      working-directory: python-greetings
+      run: python3 -m venv venv
+
+    - name: Install required pip dependencies
+      shell: bash
+      working-directory: python-greetings
+      run: ./venv/bin/python -m pip install -r requirements.txt

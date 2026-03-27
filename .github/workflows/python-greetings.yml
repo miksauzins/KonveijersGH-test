@@ -1,0 +1,117 @@
+name: Python Greetings CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  install-pip-deps:
+    runs-on: self-hosted
+    steps:
+      - name: Display stage info
+        run: echo "Installing all required dependencies for python-greetings service..."
+
+      - name: Run install dependencies composite action
+        uses: ./.github/actions/install-deps
+
+  deploy-to-dev:
+    runs-on: self-hosted
+    needs: install-pip-deps
+    steps:
+      - name: Display stage info
+        run: echo "Deploying python-greetings service to DEV environment on port 7001..."
+
+      - name: Deploy to dev
+        uses: ./.github/actions/deploy
+        with:
+          environment: dev
+          port: '7001'
+
+  tests-on-dev:
+    runs-on: self-hosted
+    needs: deploy-to-dev
+    steps:
+      - name: Display stage info
+        run: echo "Running API tests against DEV environment..."
+
+      - name: Run tests on dev
+        uses: ./.github/actions/test
+        with:
+          environment: dev
+
+  deploy-to-stg:
+    runs-on: self-hosted
+    needs: tests-on-dev
+    steps:
+      - name: Display stage info
+        run: echo "Deploying python-greetings service to STG environment on port 7002..."
+
+      - name: Deploy to stg
+        uses: ./.github/actions/deploy
+        with:
+          environment: stg
+          port: '7002'
+
+  tests-on-stg:
+    runs-on: self-hosted
+    needs: deploy-to-stg
+    steps:
+      - name: Display stage info
+        run: echo "Running API tests against STG environment..."
+
+      - name: Run tests on stg
+        uses: ./.github/actions/test
+        with:
+          environment: stg
+
+  deploy-to-preprod:
+    runs-on: self-hosted
+    needs: tests-on-stg
+    steps:
+      - name: Display stage info
+        run: echo "Deploying python-greetings service to PREPROD environment on port 7003..."
+
+      - name: Deploy to preprod
+        uses: ./.github/actions/deploy
+        with:
+          environment: preprod
+          port: '7003'
+
+  tests-on-preprod:
+    runs-on: self-hosted
+    needs: deploy-to-preprod
+    steps:
+      - name: Display stage info
+        run: echo "Running API tests against PREPROD environment..."
+
+      - name: Run tests on preprod
+        uses: ./.github/actions/test
+        with:
+          environment: preprod
+
+  deploy-to-prod:
+    runs-on: self-hosted
+    needs: tests-on-preprod
+    steps:
+      - name: Display stage info
+        run: echo "Deploying python-greetings service to PROD environment on port 7004..."
+
+      - name: Deploy to prod
+        uses: ./.github/actions/deploy
+        with:
+          environment: prod
+          port: '7004'
+
+  Tests-on-prod:
+    runs-on: self-hosted
+    needs: deploy-to-prod
+    steps:
+      - name: Display stage info
+        run: echo "Running API tests against PROD environment..."
+
+      - name: Run tests on prod
+        uses: ./.github/actions/test
+        with:
+          environment: prod
