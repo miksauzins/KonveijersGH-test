@@ -29,5 +29,5 @@ runs:
     - name: Start service with pm2
       shell: bash
       working-directory: python-greetings
-      run: pm2 start app.py --name greetings-${{ inputs.environment }} -- --port ${{ inputs.port }}
+      run: pm2 start app.py --name greetings-${{ inputs.environment}} --interpreter ./venv/bin/python -- --port ${{ inputs.port }}
 
