@@ -1,12 +1,12 @@
 name: 'Deploy Python Greetings Service'
-description: 'Deploys the python-greetings service to a specified environment'
+description: 'Deploys the python-greetings service to an environment'
 
 inputs:
   environment:
-    description: 'Target environment (dev, stg, preprod, prod)'
+    description: 'Environment where to deploy sample app'
     required: true
   port:
-    description: 'Port for the service to run on'
+    description: 'Port of the deployed service'
     required: true
 
 runs:

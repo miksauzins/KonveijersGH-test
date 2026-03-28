@@ -1,5 +1,5 @@
 name: 'Install Python Dependencies'
-description: 'Clones python-greetings and installs all required pip dependencies into a virtual environment'
+description: 'Installs all dependencies'
 
 runs:
   using: 'composite'

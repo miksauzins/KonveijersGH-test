@@ -1,4 +1,4 @@
-name: Python Greetings CI/CD Pipeline
+name: MiksAuzins GH pipeline
 
 on:
   push:
@@ -104,7 +104,7 @@ jobs:
           environment: prod
           port: '7004'
 
-  Tests-on-prod:
+  tests-on-prod:
     runs-on: self-hosted
     needs: deploy-to-prod
     steps:

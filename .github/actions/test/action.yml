@@ -1,5 +1,5 @@
 name: 'Run Greetings API Tests'
-description: 'Runs API tests against the python-greetings service in a specified environment'
+description: 'Runs tests on specific environment'
 
 inputs:
   environment:
