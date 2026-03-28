@@ -10,6 +10,7 @@ jobs:
   install-pip-deps:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Installing all required dependencies for python-greetings service..."
 
@@ -20,6 +21,7 @@ jobs:
     runs-on: self-hosted
     needs: install-pip-deps
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Deploying python-greetings service to DEV environment on port 7001..."
 
@@ -33,6 +35,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-dev
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Running API tests against DEV environment..."
 
@@ -45,6 +48,7 @@ jobs:
     runs-on: self-hosted
     needs: tests-on-dev
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Deploying python-greetings service to STG environment on port 7002..."
 
@@ -58,6 +62,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-stg
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Running API tests against STG environment..."
 
@@ -70,6 +75,7 @@ jobs:
     runs-on: self-hosted
     needs: tests-on-stg
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Deploying python-greetings service to PREPROD environment on port 7003..."
 
@@ -83,6 +89,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-preprod
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Running API tests against PREPROD environment..."
 
@@ -95,6 +102,7 @@ jobs:
     runs-on: self-hosted
     needs: tests-on-preprod
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Deploying python-greetings service to PROD environment on port 7004..."
 
@@ -108,6 +116,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-prod
     steps:
+      - uses: actions/checkout@v6
       - name: Display stage info
         run: echo "Running API tests against PROD environment..."
 
