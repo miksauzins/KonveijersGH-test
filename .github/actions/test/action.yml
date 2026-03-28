@@ -23,4 +23,4 @@ runs:
     - name: Run tests against environment
       shell: bash
       working-directory: course-js-api-framework
-      run: npm run greetings greetings-${{ inputs.environment }}
+      run: npm run greetings greetings_${{ inputs.environment }}
