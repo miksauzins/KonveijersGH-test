@@ -1,4 +1,4 @@
-name: MiksAuzins GH pipeline
+name: MiksAuzins GH pipeline 1
 
 on:
   push:
