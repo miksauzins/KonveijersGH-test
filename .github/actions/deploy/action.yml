@@ -24,9 +24,10 @@ runs:
     - name: Stop existing service instance
       shell: bash
       working-directory: python-greetings
-      run: pm2 delete greetings-app-${{ inputs.environment }} || true
+      run: pm2 delete greetings-${{ inputs.environment }} || true
 
     - name: Start service with pm2
       shell: bash
       working-directory: python-greetings
-      run: pm2 start app.py --name greetings-app-${{ inputs.environment }} -- --port ${{ inputs.port }}
+      run: pm2 start app.py --name greetings-${{ inputs.environment }} -- --port ${{ inputs.port }}
+
