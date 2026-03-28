@@ -5,7 +5,7 @@ runs:
   using: composite
   steps:
     - name: Checkout python-greetings repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: mtararujs/python-greetings
         path: python-greetings

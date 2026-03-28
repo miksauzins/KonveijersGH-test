@@ -9,11 +9,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout pipeline repository
-      uses: actions/checkout@v4
-
     - name: Checkout course-js-api-framework repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: mtararujs/course-js-api-framework
         path: course-js-api-framework

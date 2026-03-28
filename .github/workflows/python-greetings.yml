@@ -11,9 +11,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Installing all required dependencies for python-greetings service..."
-
       - name: Run install dependencies composite action
         uses: ./.github/actions/install-deps
 
@@ -22,6 +23,8 @@ jobs:
     needs: install-pip-deps
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Deploying python-greetings service to DEV environment on port 7001..."
 
@@ -36,6 +39,8 @@ jobs:
     needs: deploy-to-dev
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Running API tests against DEV environment..."
 
@@ -49,6 +54,8 @@ jobs:
     needs: tests-on-dev
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Deploying python-greetings service to STG environment on port 7002..."
 
@@ -63,6 +70,8 @@ jobs:
     needs: deploy-to-stg
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Running API tests against STG environment..."
 
@@ -76,6 +85,8 @@ jobs:
     needs: tests-on-stg
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Deploying python-greetings service to PREPROD environment on port 7003..."
 
@@ -90,6 +101,8 @@ jobs:
     needs: deploy-to-preprod
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Running API tests against PREPROD environment..."
 
@@ -103,6 +116,8 @@ jobs:
     needs: tests-on-preprod
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Deploying python-greetings service to PROD environment on port 7004..."
 
@@ -117,6 +132,8 @@ jobs:
     needs: deploy-to-prod
     steps:
       - uses: actions/checkout@v6
+        with:
+          clean: false
       - name: Display stage info
         run: echo "Running API tests against PROD environment..."
 

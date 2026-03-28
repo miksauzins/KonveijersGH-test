@@ -13,16 +13,11 @@ runs:
   using: 'composite'
   steps:
     - name: Checkout python-greetings repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: mtararujs/python-greetings
         path: python-greetings
         clean: false
-
-    - name: Create Python virtual environment
-      shell: bash
-      working-directory: python-greetings
-      run: python3 -m venv venv
 
     - name: Stop existing service instance
       shell: bash
