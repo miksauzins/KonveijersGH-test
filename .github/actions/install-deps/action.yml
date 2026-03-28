@@ -4,9 +4,6 @@ description: 'Installs all dependencies'
 runs:
   using: composite
   steps:
-    - name: Checkout own repository
-      uses: actions/checkout@v6
-
     - name: Checkout python-greetings repository
       uses: actions/checkout@v4
       with:
