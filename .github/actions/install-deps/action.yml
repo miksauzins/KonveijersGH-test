@@ -2,10 +2,10 @@ name: 'Install Python Dependencies'
 description: 'Installs all dependencies'
 
 runs:
-  using: 'composite'
+  using: composite
   steps:
-    - name: Checkout pipeline repository
-      uses: actions/checkout@v4
+    - name: Checkout own repository
+      uses: actions/checkout@v6
 
     - name: Checkout python-greetings repository
       uses: actions/checkout@v4
